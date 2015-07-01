@@ -32,8 +32,8 @@ use frontend\models\Cdischarcetype;
     </div>
         
         <div class="page-header-line">
-    <h3><label class="label label-success">ข้อมูลประวัติผู้ป่วย</label></h3>
-</div>
+            <h3><label class="label label-success">ข้อมูลประวัติผู้ป่วย</label></h3>
+        </div>
 
     <div class="panel-body">
         
@@ -104,7 +104,7 @@ use frontend\models\Cdischarcetype;
 </div>
 
         <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-6">
+        <div class="col-sm-offset-5 col-sm-7">
             <?=
             $form->field($model, 'hospcode')->widget(Select2::className(), ['data' => 
                         ArrayHelper::map(Chospital::find()->orderBy('hospname')->all(), 'hospcode', 'hospname'),
@@ -125,13 +125,7 @@ use frontend\models\Cdischarcetype;
          <div class="col-xs-4 col-sm-4 col-md-3">
             <?= $form->field($model, 'an')->textInput(['maxlength' => true]) ?>
         </div>
-</div>
-
-        <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-3">
-            <?= $form->field($model, 'ward')->textInput(['maxlength' => true]) ?>
-        </div>         
-         <div class="col-xs-4 col-sm-4 col-md-3">            
+            <div class="col-xs-4 col-sm-4 col-md-3">            
              <?=$form->field($model,'date_addmit')->widget(\yii\jui\DatePicker::classname(),[  
                     'language' => 'th',
                     'dateFormat' => 'yyyy-MM-dd',
@@ -153,6 +147,13 @@ use frontend\models\Cdischarcetype;
                 ]);
             ?>
         </div>
+</div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-2">
+            <?= $form->field($model, 'admit_day')->textInput() ?>
+        </div>
+            
             <div class="col-xs-4 col-sm-4 col-md-3">             
             <?=
             $form->field($model, 'discharge_type')->widget(Select2::className(), ['data' => 
@@ -165,16 +166,8 @@ use frontend\models\Cdischarcetype;
                         ],
                     ]);
             ?>
-        </div>            
-</div>
-
-        <div class="row">
-         <div class="col-xs-4 col-sm-4 col-md-4">
-            <?= $form->field($model, 'admit_day')->textInput() ?>
-        </div>
-</div>
-         <div class="row">
-        <div class="col-xs-9 col-sm-9 col-md-9">
+        </div>  
+            <div class="col-xs-9 col-sm-9 col-md-7">
            <?=
             $form->field($model, 'pdx')->widget(Select2::className(), ['data' => 
                         ArrayHelper::map(Cdisease::find()->orderBy('disease')->all(), 'diagcode', 'diagcode'),
@@ -187,9 +180,10 @@ use frontend\models\Cdischarcetype;
                     ]);
             ?>
         </div>
-        </div>
+</div>
+         
          <div class="row">
-        <div class="col-xs-9 col-sm-9 col-md-9">
+        <div class="col-xs-9 col-sm-9 col-md-12">
            <?= $form->field($model, 'note1')->textInput(['maxlength' => true]) ?>
         </div>
         </div>
