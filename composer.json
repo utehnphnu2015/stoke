@@ -17,7 +17,22 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.4",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2-bootstrap": "*",
+        "2amigos/yii2-date-picker-widget": "~1.0",
+        "yiisoft/yii2-jui": "*",
+        "sendgrid/sendgrid": "2.1.1", 
+        "kartik-v/yii2-date-range": "*",
+        "kartik-v/yii2-widgets": "*", 
+        "kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-editable": "*",
+        "2amigos/yii2-chartjs-widget": "~2.0",
+        "2amigos/yii2-highcharts-widget": "~1.0",
+        "scotthuangzl/yii2-google-chart": "dev-master",
+        "miloschuman/yii2-highcharts-widget": "dev-master",
+        "kartik-v/yii2-export": "*",
+        "kartik-v/yii2-mpdf": "*"
+        
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

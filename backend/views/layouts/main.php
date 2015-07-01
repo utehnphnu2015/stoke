@@ -31,8 +31,15 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
+//            if (Yii::$app->user-> isGuest) {
+//                $menuItems[] = ['label' => 'Login', 'url' => ['/patient/index']];
+//            } 
             $menuItems = [
+                
+                ['label' => 'stoke', 'url' => ['/patient/index']],
+                
                 ['label' => 'Home', 'url' => ['/site/index']],
+                
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
