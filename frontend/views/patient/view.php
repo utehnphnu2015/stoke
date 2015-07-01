@@ -16,13 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->pid], ['class' => 'btn btn-primary']) ?>
-        <?php //echo Html::a('Delete', ['delete', 'id' => $model->pid], [
-//            'class' => 'btn btn-danger',
-//            'data' => [
-//                'confirm' => 'Are you sure you want to delete this item?',
-//                'method' => 'post',
-//            ],
-//        ]) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->pid], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'คุณต้องการ ลบ ข้อมูลนี้?',
+                'method' => 'post',
+            ],
+        ]) ?>
     </p>
     <div class="panel panel-success">
         <div class="panel-heading">ประวัติผู้ป่วย</div>

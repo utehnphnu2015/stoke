@@ -3,6 +3,12 @@
 namespace frontend\models;
 
 use Yii;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\helpers\Json;
+use yii\db\Expression;
+use app\models\Cdisease;
+use frontend\models\Campur;
 
 /**
  * This is the model class for table "patient".
@@ -36,6 +42,9 @@ class Patient extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    
+    
+    
     public static function tableName()
     {
         return 'patient';
@@ -56,6 +65,7 @@ class Patient extends \yii\db\ActiveRecord
             [['discharge_type', 'village', 'province'], 'string', 'max' => 2],
             [['address'], 'string', 'max' => 50],
             [['amphur'], 'string', 'max' => 4],
+            [['province'], 'default','value'=>65],
             [['note1', 'note2', 'note3', 'note4'], 'string', 'max' => 255]
         ];
     }
@@ -77,7 +87,7 @@ class Patient extends \yii\db\ActiveRecord
             'date_discharge' => 'วันที่จำหน่าย',
             'ward' => 'แผนก(ตึกผู้ป่วย)',
             'pdx' => 'รหัสโรค',
-            'discharge_type' => 'ประเภทการจำหน่าย',
+            'discharge_type' => 'การจำหน่าย',
             'admit_day' => 'รวมวันนอน',
             'address' => 'ที่อยู่',
             'village' => 'หมู่ที่',

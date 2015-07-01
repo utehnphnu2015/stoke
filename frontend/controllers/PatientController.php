@@ -69,11 +69,11 @@ class PatientController extends Controller
         $model = new Patient();
 
         if ($model->load(Yii::$app->request->post())) {
-           // $model->province = 65;
+            $model->province = 65;
             $model->save();
             return $this->redirect(['view', 'id' => $model->pid]);
         } else {
-            return $this->render('create', [
+            return $this->renderAjax('create', [
                 'model' => $model,
             ]);
         }

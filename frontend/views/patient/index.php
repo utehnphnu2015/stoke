@@ -7,6 +7,8 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 use kartik\dynagrid\DynaGrid;
 use kartik\grid\GridView;
+use yii\bootstrap\Modal;
+use frontend\models\Campur;
 
 
 
@@ -24,10 +26,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('<i class="glyphicon glyphicon-plus"></i> บันทึกข้อมูล', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> บันทึกข้อมูลผู้ป่วย STOKE', [
+            'value'=>Url::to('index.php?r=patient/create'),'class' => 
+            'btn btn-success','id'=>'modalButton2']) ?>
     </p>
+    
+    <?php
+        Modal::begin([
+            'header'=>'<h4>บันทึกข้อมูลผู้ป่วย STOKE</h4>',
+            'id'=>'modal2',
+            'size'=>'modal-lg',
+            'options'=>[
+                'tabindex' => false
+            ]
+                ]);
+        echo "<div id='modalContent2'></div>";
+        Modal::end();
+    ?> 
 
-    <?php Pjax::begin();?> 
+    <?php Pjax::begin(['id'=>'stoke-gridview']);?> 
     <?php echo \kartik\grid\GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel'=>$searchModel,    
@@ -48,9 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
             
         [
                     'attribute'=>'name',
-                    'width'=>'160px',
-                    'headerOptions'=>['class'=>'text-center'],
-                    'contentOptions'=>['class'=>'text-center'],  
+                    'width'=>'180px',
+                    'headerOptions'=>['class'=>'text-center'],                    
                  ], 
              //'cid',
                 
@@ -77,7 +93,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     //'format'=>'raw'    
                 ],
                   'headerOptions'=>['class'=>'text-center'],
-              ],         
+                  'filterInputOptions'=>['placeholder'=>'เลือก อำเภอ'],
+              ], 
               [
                   'attribute'=>'tambon',
                   'value'=>'tambons.tambonname',
@@ -90,20 +107,42 @@ $this->params['breadcrumbs'][] = $this->title;
                     //'format'=>'raw'    
                 ],
                   'headerOptions'=>['class'=>'text-center'],
+                  'filterInputOptions'=>['placeholder'=>'เลือก ตำบล'],  
               ],  
-              [
-                  'attribute'=>'tambon',
-                  'value'=>'tambons.tambonname',
-                  'headerOptions'=>['class'=>'text-center'],
-              ],
+             
         [
                      'attribute'=>'pdx', 
                      'headerOptions'=>['class'=>'text-center'],
                      'contentOptions'=>['class'=>'text-center'], 
                  ],
-         [
+        
+               [
                   'attribute'=>'hospcode',
-                  'value'=>'hospcodes.hospname'
+                   'value'=>'hospcodes.hospname',
+                  'filter'=>ArrayHelper::map(\frontend\models\Chospital::find()->orderBy('hospcode')->asArray()->all(), 'hospname', 'hospname'),  
+                    'vAlign'=>'middle',
+                    'width'=>'200px',
+                    'filterType'=>GridView::FILTER_SELECT2,           
+                    'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                    //'format'=>'raw'    
+                ],
+                  'headerOptions'=>['class'=>'text-center'],
+                  'filterInputOptions'=>['placeholder'=>'เลือก สถานพยาบาล'], 
+              ],
+              [
+                  'attribute'=>'discharge_type',
+                   'value'=>'discharge.discharge_name',
+                  'filter'=>ArrayHelper::map(\frontend\models\Cdischarcetype::find()->orderBy('discharge_id')->asArray()->all(), 'discharge_name', 'discharge_name'),  
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'filterType'=>GridView::FILTER_SELECT2,           
+                    'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                    //'format'=>'raw'    
+                ],
+                  'headerOptions'=>['class'=>'text-center'],
+                  'filterInputOptions'=>['placeholder'=>'เลือก การจำหน่าย'], 
               ],
               //'date_addmit',
              //'date_discharge',

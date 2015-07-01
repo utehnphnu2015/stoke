@@ -23,7 +23,7 @@ use frontend\models\Cdischarcetype;
 
 <div class="patient-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id'=>'$model->formName()']); ?>
     <div class="panel panel-primary">
     <div class="panel-heading">
         
@@ -210,3 +210,32 @@ use frontend\models\Cdischarcetype;
         </div>
         </div>
 </div>
+<?php $script = <<< JS
+        
+$('form#{$model->formName()}').on('beforeSubmit',function(e)
+{
+   var \$form = $(this);
+       $.post(
+       \$form.attr("action"),
+       \$form.serialize()
+   )
+        .done(function(result){
+        if(result == 1)
+        {            
+        $(\$form).trigger("reset");
+        $.pjax.reload({container:'#stoke-gridview'});
+   }else
+   {       
+       $("#message").html(result);
+       }
+       }).fail(function()
+       {
+                console.log("server error");
+       
+            });   
+        return false;
+   });
+
+JS;
+$this->registerJs($script);
+?>

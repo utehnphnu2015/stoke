@@ -45,6 +45,11 @@ class PatientSearch extends Patient
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+            'defaultOrder'=>[
+            'pid'=> 'SORT_DESC',
+                    ]
+               ],   
         ]);
 
 
@@ -55,6 +60,7 @@ class PatientSearch extends Patient
         $dataProvider->query->joinWith('ampurs');    
         $dataProvider->query->joinWith('tambons');
         $dataProvider->query->joinWith('hospcodes');
+        $dataProvider->query->joinWith('discharge');
 
         $query->andFilterWhere([
             'pid' => $this->pid,
@@ -72,7 +78,7 @@ class PatientSearch extends Patient
             ->andFilterWhere(['like', 'chospital.hospname', $this->hospcode])
             ->andFilterWhere(['like', 'ward', $this->ward])
             ->andFilterWhere(['like', 'pdx', $this->pdx])
-            ->andFilterWhere(['like', 'cdischarge.discharge_type', $this->discharge_type])
+            ->andFilterWhere(['like', 'cdischarce_type.discharge_name', $this->discharge_type])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'village', $this->village])
             ->andFilterWhere(['like', 'ctambon.tambonname', $this->tambon])
