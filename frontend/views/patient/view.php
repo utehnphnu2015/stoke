@@ -66,7 +66,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'hn',
             'an',
             'ward',
-             'date_addmit',              
+            'date_addmit',    
+            'date_discharge',
             'admit_day',
              [
                 'attribute'=>'discharge_type',
