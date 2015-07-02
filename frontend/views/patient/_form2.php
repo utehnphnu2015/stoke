@@ -73,32 +73,26 @@ use frontend\models\Cdischarcetype;
             $form->field($model, 'amphur')->widget(Select2::className(), ['data' => 
                         ArrayHelper::map(Campur::find()->orderBy('ampurname')->all(), 'ampurcodefull', 'ampurname'),
                         'options' => [
-                            'id'=>'ddl-ampur',
-                        'placeholder' => '<--คลิกเลือกอำเภอ-->'],                        
+                                'id'=>'dlAm',
+                                'placeholder' => '<--คลิกเลือกอำเภอ-->'
+                            ],                        
                         'pluginOptions' =>
-                        [
+                                [
                             'allowClear' => true
-                        ],
+                                ],
                     ]);
             ?>
         </div> 
-        <div class="col-xs-4 col-sm-4 col-md-3">            
-            <?=
-            $form->field($model, 'tambon')->widget(DepDrop::className(), [
-                        'data' => [],
-                        'options' => [
-                            'id'=>'ddl-tambon',
-                            'placeholder' => '<--คลิกเลือกหรือพิมพ์ชื่อตำบล-->'],
-                        'type' => DepDrop::TYPE_SELECT2,
-                        'select2Options' => ['pluginOptions' => ['allowClear' => true]],
-                        'pluginOptions' => [
-                            'depends'=>['ddl-ampur'],           
-                            'url' => Url::to(['/patient/get-tambon']),
-                            'loadingText' => 'Loading1...',
-                        ],
-                    ]);
-            ?>             
-        </div> 
+        <div class="col-md-4">
+            <?php
+            $list = ArrayHelper::map(Ctambon::find()->where(['amphur'=>$model->ampurcode,'tambon'=>$model->tamboncodefull])->all(),'tamboncodefull','tambonname');
+            
+            echo $form->field($model, 'tambon')->dropDownList($list, [
+                'id' => 'dlTam',
+                'prompt' => '--อำเภอ--']
+                 );
+            ?>
+        </div>
 </div>
         <hr/> 
         
@@ -210,32 +204,35 @@ use frontend\models\Cdischarcetype;
         </div>
         </div>
 </div>
-<?php $script = <<< JS
-        
-$('form#{$model->formName()}').on('beforeSubmit',function(e)
-{
-   var \$form = $(this);
-       $.post(
-       \$form.attr("action"),
-       \$form.serialize()
-   )
-        .done(function(result){
-        if(result == 1)
-        {            
-        $(\$form).trigger("reset");
-        $.pjax.reload({container:'#stoke-gridview'});
-   }else
-   {       
-       $("#message").html(result);
-       }
-       }).fail(function()
-       {
-                console.log("server error");
-       
-            });   
-        return false;
-   });
 
+<?php
+$route_get_tambon = \Yii::$app->urlManager->createUrl(['ajax/get-tambon']);
+
+$js = <<<JS
+ 
+   $('#dlAm').on('change', function(){
+      
+        var param = $(this).val();
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "$route_get_tambon",
+            cache: false,
+            data: "p="+param,
+            success: function(res){            
+                $("#dlTam").empty();
+                $("#dlTam").append("<option>-- ตำบล --</option>");
+                $.each(res,function(index,value){
+                    $("#dlTam").append("<option value="+value.tamboncodefull+">" + value.tamboncodefull +"-"+ value.tambonname  + "</option>");                
+                });        
+            }
+        });
+        
+   });
+        
 JS;
-$this->registerJs($script);
+?>
+
+<?php
+$this->registerJs($js);
 ?>
