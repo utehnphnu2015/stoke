@@ -32,10 +32,15 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-            $menuItems = [
-                ['label' => 'หน้าหลัก', 'url' => ['/site/index']],
+            //$menuItems = [
+                //['label' => 'หน้าหลัก', 'url' => ['/site/index']],
+                $menuItems[] = [
+                    'label' => 'หน้าหลัก',
+                    'url' => ['/site/index'],  
+                    'visible' => Yii::$app->user->isGuest
+                ];
                 
-            ];
+           
             if (Yii::$app->user->isGuest) {
                // $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => 'ลงชื่อเข้าใช้งาน', 'url' => ['/site/login']];
