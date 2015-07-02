@@ -113,4 +113,15 @@ class Patient extends \yii\db\ActiveRecord
     public function getDischarge(){
         return $this->hasOne(Cdischarcetype::className(), ['discharge_id'=>'discharge_type']);
     }
+    public function beforeSave($insert) {
+        if ($this->isNewRecord) {
+            $this->d_update = date('Y-m-d H:i:s');
+        } else {
+            $this->d_update = date('Y-m-d H:i:s');
+        }
+        return parent::beforeSave($insert);
+    }
+     public function getDate() {
+        return date('Y-m-d H:i:s', $this->d_update);
+    }
 }

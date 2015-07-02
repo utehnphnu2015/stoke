@@ -68,7 +68,8 @@ class PatientController extends Controller
     {
         $model = new Patient();
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {            
+            $model->d_update = date('Y-m-d h:m:s');
             
             $model->save();
             return $this->redirect(['index']);
@@ -90,7 +91,11 @@ class PatientController extends Controller
         $model = $this->findModel($id);
         //$tambon = ArrayHelper::map($this->getTambon($model->amphur),'id','tambonname');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->d_update = date('Y-m-d h:m:s');
+            
+            $model->save();            
+            
             return $this->redirect(['view', 'id' => $model->pid]);
         } else {
             return $this->render('update', [
@@ -152,4 +157,6 @@ class PatientController extends Controller
         }
         return $obj;
     }
+    
+   
 }
