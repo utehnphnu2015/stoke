@@ -53,7 +53,10 @@ use frontend\models\Cdischarcetype;
                     'clientOptions' => [
                         'changeMonth' => true,
                         'changeYear' => true,
-                     ],
+                            ],
+                        'options'=>[
+                            'class'=>'form-control'
+                        ],    
                 ]);
             ?>
         </div>    
@@ -135,7 +138,10 @@ use frontend\models\Cdischarcetype;
                     'clientOptions' => [
                         'changeMonth' => true,
                         'changeYear' => true,
-                     ],
+                            ],
+                        'options'=>[
+                            'class'=>'form-control'
+                        ],    
                 ]);
             ?>
         </div>
@@ -146,7 +152,10 @@ use frontend\models\Cdischarcetype;
                     'clientOptions' => [
                         'changeMonth' => true,
                         'changeYear' => true,
-                     ],
+                         ],
+                             'options'=>[
+                                 'class'=>'form-control'
+                        ],
                 ]);
             ?>
         </div>
@@ -190,11 +199,6 @@ use frontend\models\Cdischarcetype;
            <?= $form->field($model, 'note1')->textInput(['maxlength' => true]) ?>
         </div>
         </div>
-
-    
-
-    
-
     <div class="form-group">
             <div class="col-sm-offset-2 col-sm-9">
         <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'Update', 
