@@ -57,7 +57,7 @@ use frontend\models\Cdischarcetype;
                 ]);
             ?>
         </div>    
-</div>
+        </div>
         <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-3">
             <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
@@ -104,7 +104,7 @@ use frontend\models\Cdischarcetype;
 </div>
 
         <div class="row">
-        <div class="col-sm-offset-5 col-sm-7">
+        <div class="col-sm-offset-3 col-sm-6">
             <?=
             $form->field($model, 'hospcode')->widget(Select2::className(), ['data' => 
                         ArrayHelper::map(Chospital::find()->orderBy('hospname')->all(), 'hospcode', 'hospname'),
@@ -117,6 +117,9 @@ use frontend\models\Cdischarcetype;
                     ]);
             ?>
         </div>
+        <div class="col-xs-4 col-sm-4 col-md-3">
+            <?= $form->field($model, 'ward')->textInput(['maxlength' => true]) ?>
+        </div>    
         </div> 
         <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-3">
