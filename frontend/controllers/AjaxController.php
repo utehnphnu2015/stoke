@@ -15,4 +15,12 @@ class AjaxController extends \yii\web\Controller {
         return $raw;      
         
     }    
+    public function actionGetIcd101() {
+        Yii::$app->response->format = "json";
+        
+        $sql = "SELECT diagcode from cdisease ";
+        $raw = $this->queryall($sql);
+        return $raw;      
+        
+    }  
 }

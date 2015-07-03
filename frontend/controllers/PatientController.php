@@ -66,7 +66,7 @@ class PatientController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Patient();
+        $model = new Patient();        
 
         if ($model->load(Yii::$app->request->post())) {            
             $model->d_update = date('Y-m-d h:m:s');

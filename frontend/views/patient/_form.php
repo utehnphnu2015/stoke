@@ -178,11 +178,17 @@ use frontend\models\Cdischarcetype;
                     ]);
             ?>
         </div>  
-            <div class="col-xs-9 col-sm-9 col-md-7">
+            <div class="col-xs-9 col-sm-9 col-md-7">   
+               
            <?=
-            $form->field($model, 'pdx')->widget(Select2::className(), ['data' => 
-                        ArrayHelper::map(Cdisease::find()->orderBy('disease')->all(), 'diagcode', 'diagcode'),
-                        'options' => [                         
+            $form->field($model, 'pdx')->widget(Select2::className(), [
+                        'data' => 
+                        //ArrayHelper::map(Cdisease::find()->orderBy('disease')->one(), 'diagcode', 'diagcode'),
+                        ArrayHelper::map(Cdisease::find()->orderBy('disease')->all(), 'diagcode',
+                         function ($model,$defaultValue){
+                                    return $model->diagcode.'-'.$model->disease;
+                         }),
+                        'options' => [                           
                         'placeholder' => '<--คลิกเลือกชื่อโรค-->'],                        
                         'pluginOptions' =>
                         [
