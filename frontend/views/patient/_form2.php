@@ -23,7 +23,7 @@ use frontend\models\Cdischarcetype;
 
 <div class="patient-form">
 
-    <?php $form = ActiveForm::begin(['id'=>'$model->formName()']); ?>
+    <?php $form = ActiveForm::begin(); ?>
     <div class="panel panel-primary">
     <div class="panel-heading">
         
@@ -73,26 +73,28 @@ use frontend\models\Cdischarcetype;
             $form->field($model, 'amphur')->widget(Select2::className(), ['data' => 
                         ArrayHelper::map(Campur::find()->orderBy('ampurname')->all(), 'ampurcodefull', 'ampurname'),
                         'options' => [
-                                'id'=>'dlAm',
-                                'placeholder' => '<--คลิกเลือกอำเภอ-->'
-                            ],                        
+                            'id'=>'dlAmpur',
+                        'placeholder' => '<--คลิกเลือกอำเภอ-->'],                        
                         'pluginOptions' =>
-                                [
+                        [
                             'allowClear' => true
-                                ],
+                        ],
                     ]);
-            ?>
+            ?>            
+             
         </div> 
-        <div class="col-md-4">
+        <div class="col-xs-4 col-sm-4 col-md-3">            
             <?php
             $list = ArrayHelper::map(Ctambon::find()->where(['amphur'=>$model->ampurcode,'tambon'=>$model->tamboncodefull])->all(),'tamboncodefull','tambonname');
             
             echo $form->field($model, 'tambon')->dropDownList($list, [
-                'id' => 'dlTam',
-                'prompt' => '--อำเภอ--']
-                 );
+                'id' => 'dlTambon',
+                'prompt' => '--ตำบล--'
+                    ]
+            );
             ?>
-        </div>
+            
+        </div> 
 </div>
         <hr/> 
         
@@ -204,13 +206,12 @@ use frontend\models\Cdischarcetype;
         </div>
         </div>
 </div>
-
 <?php
 $route_get_tambon = \Yii::$app->urlManager->createUrl(['ajax/get-tambon']);
 
 $js = <<<JS
- 
-   $('#dlAm').on('change', function(){
+        
+       $('#dlAmpur').on('change', function(){
       
         var param = $(this).val();
         $.ajax({
@@ -220,15 +221,15 @@ $js = <<<JS
             cache: false,
             data: "p="+param,
             success: function(res){            
-                $("#dlTam").empty();
-                $("#dlTam").append("<option>-- ตำบล --</option>");
+                $("#dlTambon").empty();
+                $("#dlTambon").append("<option>-- ตำบล --</option>");
                 $.each(res,function(index,value){
-                    $("#dlTam").append("<option value="+value.tamboncodefull+">" + value.tamboncodefull +"-"+ value.tambonname  + "</option>");                
+                    $("#dlTambon").append("<option value="+value.tambonname "</option>");                
                 });        
             }
         });
         
-   });
+   });// จบดึงตำบล 
         
 JS;
 ?>

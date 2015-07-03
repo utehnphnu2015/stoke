@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
+        <?php //echo  Html::a('<i class="glyphicon glyphicon-plus"></i> 1บันทึกข้อมูลผู้ป่วย STOKE',['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::button('<i class="glyphicon glyphicon-plus"></i> บันทึกข้อมูลผู้ป่วย STOKE', [
             'value'=>Url::to('index.php?r=patient/create'),'class' => 
             'btn btn-success','id'=>'modalButton2']) ?>

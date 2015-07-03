@@ -85,7 +85,7 @@ use frontend\models\Cdischarcetype;
         <div class="col-xs-4 col-sm-4 col-md-3">            
             <?=
             $form->field($model, 'tambon')->widget(DepDrop::className(), [
-                        'data' => [],
+                        'data' => $tambon,
                         'options' => [
                             'id'=>'ddl-tambon',
                             'placeholder' => '<--คลิกเลือกหรือพิมพ์ชื่อตำบล-->'],

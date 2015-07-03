@@ -75,7 +75,7 @@ class PatientController extends Controller
             return $this->redirect(['index']);
         } else {
             return $this->renderAjax('create', [
-                'model' => $model,
+                'model' => $model,                
             ]);
         }
     }
@@ -89,18 +89,18 @@ class PatientController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        //$tambon = ArrayHelper::map($this->getTambon($model->amphur),'id','tambonname');
+        $tambon = ArrayHelper::map($this->getTambon($model->amphur),'id','name');
 
         if ($model->load(Yii::$app->request->post())) {
             $model->d_update = date('Y-m-d h:m:s');
             
             $model->save();            
             
-            return $this->redirect(['view', 'id' => $model->pid]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                //'tambon'=>$tambon
+                'tambon'=>$tambon
             ]);
         }
     }
