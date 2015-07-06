@@ -51,6 +51,11 @@ AppAsset::register($this);
                     'visible' => !Yii::$app->user->isGuest
                 ];
                 $menuItems[] = [
+                    'label' => 'รายงาน',
+                    'url' => ['/report/index'],  
+                    'visible' => !Yii::$app->user->isGuest
+                ];
+                $menuItems[] = [
                     'label' => 'ออกจากระบบ(' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post'],   

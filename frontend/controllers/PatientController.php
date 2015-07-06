@@ -14,6 +14,7 @@ use yii\helpers\Json;
 use yii\helpers\Url;
 use kartik\widgets\DepDrop;
 use yii\helpers\ArrayHelper;
+use yii\data\ArrayDataProvider;
 
 /**
  * PatientController implements the CRUD actions for Patient model.
