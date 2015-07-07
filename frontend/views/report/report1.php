@@ -1,5 +1,5 @@
 <?php
-$this->title = 'จำนวนผู้ป่วย Stoke';
+$this->title = 'จำนวนผู้ป่วย Stoke แยกอำเภอ';
 $this->params['breadcrumbs'][]=$this->title;
 use yii\grid\GridView;
 use miloschuman\highcharts\Highcharts;

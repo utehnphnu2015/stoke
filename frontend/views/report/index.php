@@ -7,10 +7,21 @@ use yii\helpers\Html;
 <div class="well">
 <h3>รายงานผู้ป่วย STOKE </h3>
 </div>
+
 <p>
     <?php
-    echo \yii\helpers\Html::a('1) รายชื่อผู้ป่วยแยกรายอำเภอ ', ['report/report2']);
+    echo \yii\helpers\Html::a('1) จำนวนผู้ป่วยแยกรายอำเภอ ', ['report/report3']);
     
+    ?>
+</p>
+<p>
+    <?php
+    echo \yii\helpers\Html::a('2) แสดงรายชื่อผู้ป่วยแยกรายอำเภอ(ตามช่วงเวลา) ', ['report/report2']);    
+    ?>
+</p>
+<p>
+    <?php
+    echo \yii\helpers\Html::a('3) แสดงรายชื่อผู้ป่วยแยกรายปี(ตามช่วงอายุ) ', ['report/report5']);    
     ?>
 </p>
 
