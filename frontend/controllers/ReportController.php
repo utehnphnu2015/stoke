@@ -105,7 +105,7 @@ class ReportController extends Controller
     public function actionReport3() {
        $connection = Yii::$app->db;
         $datas = $connection->createCommand('
-            SELECT a.ampurname ,COUNT(p.pid) as total  FROM patient  p
+            SELECT a.ampurname ,p.amphur,COUNT(p.pid) as total  FROM patient  p
             LEFT JOIN campur a on a.ampurcodefull=p.amphur
             LEFT JOIN ctambon b on b.tamboncodefull=p.tambon            
             GROUP BY a.ampurcodefull
@@ -121,11 +121,36 @@ class ReportController extends Controller
         ]);
         return $this->render('report3',[
             'dataProvider'=>$dataProvider,
-            //'ampurname'=>$ampurname,
-            //'total'=>$total
+          
      ]);
 
     }
+    public function actionIndivReport3($ampurcode = null){
+        $sql = "SELECT b.tambonname,b.tamboncodefull,p.amphur,COUNT(p.pid) as total  FROM patient  p
+            LEFT JOIN campur a on a.ampurcodefull=p.amphur
+            LEFT JOIN ctambon b on b.tamboncodefull=p.tambon
+            WHERE  p.amphur='$ampurcode'
+            GROUP BY b.tamboncodefull
+            ORDER BY b.tamboncodefull ";
+        $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        //print_r($rawData);
+        //return;
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        return $this->render('indivreport3', [
+                    'rawData' => $rawData,
+                    'sql' => $sql,
+                    'ampurcode' => $ampurcode,
+                   
+                    
+        ]);
+    }
+    
     public function actionReport4(){
         return $this->render('report4');
     }

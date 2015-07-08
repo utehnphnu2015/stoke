@@ -1,5 +1,6 @@
 <?php
 $this->title = 'จำนวนผู้ป่วย Stoke ตามช่วงเวลา';
+$this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][]=$this->title;
 use yii\grid\GridView;
 use miloschuman\highcharts\Highcharts;

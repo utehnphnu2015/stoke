@@ -1,10 +1,13 @@
 <?php
 $this->title = 'จำนวนผู้ป่วย Stoke รายอำเภอ';
+$this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][]=$this->title;
 use yii\grid\GridView;
 use miloschuman\highcharts\Highcharts;
 use yii\helpers\Html;
-//use miloschuman\highcharts\Highcharts;
+
+
+
 ?>
 <div style="display: none">
     <?php
@@ -14,7 +17,7 @@ use yii\helpers\Html;
             //'modules/exporting', // adds Exporting button/menu to chart
             //'themes/grid',       // applies global 'grid' theme to all charts
             //'highcharts-3d',
-            'modules/drilldown'
+            //'modules/drilldown'
         ]
     ]);
     ?>
@@ -101,7 +104,15 @@ echo \kartik\grid\GridView::widget([
         ['class'=>'yii\grid\SerialColumn'],
         [
             'label'=>'อำเภอ',
-            'attribute'=>'ampurname'
+            'attribute'=>'ampurname',
+            'format' => 'raw',
+            'value' => function($model){
+                return Html::a(Html::encode($model['ampurname']), [
+                            'report/indiv-report3',
+                            'ampurcode' => $model['amphur'],
+                            
+                ]);
+            }// end value
         ],
         
         [
