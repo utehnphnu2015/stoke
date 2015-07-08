@@ -21,7 +21,7 @@ use yii\helpers\Html;
 </p>
 <p>
     <?php
-    echo \yii\helpers\Html::a('3) แสดงรายชื่อผู้ป่วยแยกรายปี(ตามช่วงอายุ) ', ['report/report5']);    
+    echo \yii\helpers\Html::a('3) แสดงรายชื่อผู้ป่วยแยกรายปี(ตามช่วงอายุ) ', ['report/report6']);    
     ?>
 </p>
 

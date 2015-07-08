@@ -48,64 +48,39 @@ $main = json_encode($main_data);
 
 <?php
 $this->registerJs("$(function () {
-   
-    $('#chart5').highcharts({
-
+    $('#container').highcharts({
         chart: {
             type: 'column'
         },
-
         title: {
-            text: 'Total fruit consumtion, grouped by gender'
+            text: 'Monthly Average Rainfall'
         },
-
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
         xAxis: {
-            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+            type: 'category'
         },
-
         yAxis: {
-            allowDecimals: false,
             min: 0,
             title: {
-                text: 'จำนวน'
+                text: 'Rainfall (mm)'
             }
         },
+        
+        series: [{
+            name: 'New York',
+            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
 
-       
+        }, {
+            name: 'London',
+            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
 
-        series: [
-        {
-            name: '<30ปี',
-            colorByPoint: true,
-            data:'a'
-            
-        },
-         {
-            name: '31-40ปี',
-            colorByPoint: true,
-            data:'b'
-            
-        },
-         {
-            name: '41-50ปี',
-            colorByPoint: true,
-            data:'c'
-            
-        },
-         {
-            name: '51-60ปี',
-            colorByPoint: true,
-            data:'d'
-            
-        },
-         {
-            name: '60>ปีขึ้นไป',
-            colorByPoint: true,
-            data:'e'
-            
-        }
-        ],
-       
+        }, {
+            name: 'Berlin',
+            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+        }]
     });
 });", yii\web\View::POS_END);
 
