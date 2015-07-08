@@ -8,12 +8,47 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\data\ArrayDataProvider;
+use common\models\User;
+use yii\filters\AccessControl;
+use common\components\AccessRule;
 
 /**
  * PatientController implements the CRUD actions for Patient model.
  */
 class ReportController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
+            ],
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'only'=> ['report1','report2','report3','report4','report5','report6','indivreport3'],
+                'ruleConfig'=>[
+                    'class'=>AccessRule::className()
+                ],
+                'rules'=>[
+                    [
+                        'actions'=>['report1','report2','report3','report4','report5','report6','indivreport3'],
+                        'allow'=> true,
+                        'roles'=>[
+                            User::ROLE_USER,
+                            User::ROLE_MODERATOR,
+                            User::ROLE_ADMIN
+
+                        ]
+                    ],
+                    
+                ]
+            ]
+        ];
+    }
+    
     public $enableCsrfValidation = false;
     public function actionIndex()
     {

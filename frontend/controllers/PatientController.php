@@ -5,9 +5,12 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Patient;
 use frontend\models\PatientSearch;
+use common\models\User;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use common\components\AccessRule;
 use frontend\models\Campur;
 use frontend\models\Ctambon;
 use yii\helpers\Json;
@@ -30,8 +33,29 @@ class PatientController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'only'=> ['index','create','update','view','delete'],
+                'ruleConfig'=>[
+                    'class'=>AccessRule::className()
+                ],
+                'rules'=>[
+                    [
+                        'actions'=>['index','create','update','view','delete'],
+                        'allow'=> true,
+                        'roles'=>[
+                            User::ROLE_USER,
+                            User::ROLE_MODERATOR,
+                            User::ROLE_ADMIN
+
+                        ]
+                    ],
+                    
+                ]
+            ]
         ];
     }
+   
 
     /**
      * Lists all Patient models.
