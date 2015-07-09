@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+//use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use kartik\widgets\DepDrop;
@@ -38,14 +39,13 @@ use frontend\models\Cdischarcetype;
     <div class="panel-body">
         
         <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-6">
-            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-        </div>
-         <div class="col-xs-4 col-sm-4 col-md-3">            
-             <?= $form->field($model, 'cid')->widget(\yii\widgets\MaskedInput::classname(), [
-             'mask' => '9-9999-99999-99-9',
-                ]) ?>
-        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>            
+        </div>  
+        <div class="col-xs-4 col-sm-4 col-md-2">            
+            <?= $form->field($model, 'sex')->label('เพศ')->inline()
+            ->radioList(frontend\models\Patient::itemAlias('sex')) ?>
+        </div>    
         <div class="col-xs-4 col-sm-4 col-md-3">            
             <?=$form->field($model,'birth')->widget(\yii\jui\DatePicker::classname(),[  
                     'language' => 'th',
@@ -59,6 +59,11 @@ use frontend\models\Cdischarcetype;
                         ],    
                 ]);
             ?>
+        </div>  
+        <div class="col-xs-4 col-sm-4 col-md-3">            
+             <?= $form->field($model, 'cid')->widget(\yii\widgets\MaskedInput::classname(), [
+             'mask' => '9-9999-99999-99-9',
+                ]) ?>
         </div>    
         </div>
         <div class="row">

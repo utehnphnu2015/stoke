@@ -19,7 +19,7 @@ class PatientSearch extends Patient
     {
         return [
             [['pid', 'admit_day'], 'integer'],
-            [['name', 'birth', 'hn', 'an', 'cid', 'hospcode', 'date_addmit', 'date_discharge', 'ward', 'pdx', 'discharge_type', 'address', 'village', 'tambon', 'amphur', 'province', 'd_update', 'note1', 'note2', 'note3', 'note4'], 'safe'],
+            [['sex','name', 'birth', 'hn', 'an', 'cid', 'hospcode', 'date_addmit', 'date_discharge', 'ward', 'pdx', 'discharge_type', 'address', 'village', 'tambon', 'amphur', 'province', 'd_update', 'note1', 'note2', 'note3', 'note4'], 'safe'],
         ];
     }
 
@@ -73,6 +73,7 @@ class PatientSearch extends Patient
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'hn', $this->hn])
+            ->andFilterWhere(['like', 'sex', $this->sex])    
             ->andFilterWhere(['like', 'an', $this->an])
             ->andFilterWhere(['like', 'cid', $this->cid])
             ->andFilterWhere(['like', 'chospital.hospname', $this->hospcode])

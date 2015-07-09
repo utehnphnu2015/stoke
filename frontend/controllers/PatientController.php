@@ -97,6 +97,7 @@ class PatientController extends Controller
             $model->d_update = date('Y-m-d h:m:s');
             
             $model->save();
+            Yii::$app->session->setFlash('success', 'เรียบร้อย! บันทึกข้อมูลสำเร็จ!  ');
             return $this->redirect(['index']);
         } else {
             return $this->renderAjax('create', [
@@ -120,7 +121,7 @@ class PatientController extends Controller
             $model->d_update = date('Y-m-d h:m:s');
             
             $model->save();            
-            
+            Yii::$app->session->setFlash('info', 'เรียบร้อย! แก้ไขข้อมูลสำเร็จ!  ');
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [

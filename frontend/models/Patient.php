@@ -36,6 +36,7 @@ use frontend\models\Campur;
  * @property string $note2
  * @property string $note3
  * @property string $note4
+ * @property string $sex
  */
 class Patient extends \yii\db\ActiveRecord
 {
@@ -43,7 +44,11 @@ class Patient extends \yii\db\ActiveRecord
      * @inheritdoc
      */
     
+    const SEX_MEN = 1;
+    const SEX_FEMEL = 2;
     
+    
+    public static $sexs = ['ชาย' => 'ชาย', 'หญิง'=> 'หญิง'];
     
     public static function tableName()
     {
@@ -60,7 +65,7 @@ class Patient extends \yii\db\ActiveRecord
             [['admit_day'], 'integer'],
             [['name', 'ward'], 'string', 'max' => 100],
             [['hn', 'an', 'cid'], 'string', 'max' => 17],
-            [['hospcode'], 'string', 'max' => 5],
+            [['hospcode','sex'], 'string', 'max' => 5],
             [['pdx', 'tambon'], 'string', 'max' => 6],
             [['discharge_type', 'village', 'province'], 'string', 'max' => 2],
             [['address'], 'string', 'max' => 50],
@@ -99,8 +104,26 @@ class Patient extends \yii\db\ActiveRecord
             'note2' => 'Note2',
             'note3' => 'Note3',
             'note4' => 'Note4',
+            'sex'=>'เพศ',
         ];
     }
+    public static function itemAlias($type,$code=NULL) {
+        $_items = array(
+            'sex' => array(
+                'ชาย' =>  'ชาย',
+                'หญิง' => 'หญิง',
+            ), 
+         );
+        
+
+        if (isset($code)){
+            return isset($_items[$type][$code]) ? $_items[$type][$code] : false;
+        }
+        else{         
+            return isset($_items[$type]) ? $_items[$type] : false;    
+        }
+    }
+    
     public function getHospcodes(){
         return $this->hasOne(Chospital::className(), ['hospcode'=>'hospcode']);
     }    

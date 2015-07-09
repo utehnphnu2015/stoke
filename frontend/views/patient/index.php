@@ -9,6 +9,7 @@ use kartik\dynagrid\DynaGrid;
 use kartik\grid\GridView;
 use yii\bootstrap\Modal;
 use frontend\models\Campur;
+use frontend\models\Patient;
 
 
 
@@ -17,6 +18,7 @@ use frontend\models\Campur;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'ผู้ป่วย STOKE ที่admit จ.พิษณุโลก';
+$this->params['breadcrumbs'][] = ['label' => 'บันทึกข้อมูล', 'url' => ['patient/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -111,11 +113,20 @@ $this->params['breadcrumbs'][] = $this->title;
                   'filterInputOptions'=>['placeholder'=>'เลือก ตำบล'],  
               ],  
              
-        [
-                     'attribute'=>'pdx', 
-                     'headerOptions'=>['class'=>'text-center'],
-                     'contentOptions'=>['class'=>'text-center'], 
-                 ],
+              [
+                  'attribute'=>'pdx',
+                   'value'=>'pdx',
+                  'filter'=>ArrayHelper::map(\frontend\models\Cdisease::find()->asArray()->all(), 'diagcode', 'diagcode'),  
+                    'vAlign'=>'middle',
+                    'width'=>'200px',
+                    'filterType'=>GridView::FILTER_SELECT2,           
+                    'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                    //'format'=>'raw'    
+                ],
+                  'headerOptions'=>['class'=>'text-center'],
+                  'filterInputOptions'=>['placeholder'=>'เลือก โรค'], 
+              ],
         
                [
                   'attribute'=>'hospcode',
@@ -144,7 +155,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                   'headerOptions'=>['class'=>'text-center'],
                   'filterInputOptions'=>['placeholder'=>'เลือก การจำหน่าย'], 
-              ],
+              ],             
+              [
+            'attribute' => 'sex',
+            'filter' => Patient::$sexs,
+            'value' => function($data) {
+             return Patient::$sexs[$data->sex];
+                }
+            ],
               //'date_addmit',
              //'date_discharge',
              //'ward',             
