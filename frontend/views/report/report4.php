@@ -44,11 +44,16 @@ GROUP BY b.tamboncodefull
 $rawData = Yii::$app->db->createCommand($sql)->queryAll();
 $sub_data = [];
 foreach ($rawData as $data) {
+    $item = [];
+    array_push($item, [$data['tambonname'],$data['total1']*1]);
+   
+            
+    
 
     $sub_data[] = [
         'id' => $data['ampurname'],
         'name' => $data['tambonname'],
-        'data' => $data['total1'] * 1,
+        'data' => $item,
     ];
 }
 $sub = json_encode($sub_data);
@@ -70,7 +75,7 @@ $this->registerJs("$(function () {
         },
         yAxis: {
             title: {
-                text: '<b>คน</b>'
+                text: '<b>จำนวน(คน)</b>'
             },
         },
 
@@ -89,7 +94,7 @@ $this->registerJs("$(function () {
 
         series: [
         {
-            name: 'จำนวน',
+            name: 'พื้นที่',
             colorByPoint: true,
             data:$main
             
