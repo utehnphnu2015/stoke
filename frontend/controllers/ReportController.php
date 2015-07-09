@@ -28,13 +28,13 @@ class ReportController extends Controller
             ],
             'access'=>[
                 'class'=>AccessControl::className(),
-                'only'=> ['index','report1','report2','report3','report4','report5','report6','indivreport3'],
+                'only'=> ['index','report1','report2','report3','report4','report5','report6','indivreport3','subindivreport3'],
                 'ruleConfig'=>[
                     'class'=>AccessRule::className()
                 ],
                 'rules'=>[
                     [
-                        'actions'=>['index','report1','report2','report3','report4','report5','report6','indivreport3'],
+                        'actions'=>['index','report1','report2','report3','report4','report5','report6','indivreport3','subindivreport3'],
                         'allow'=> true,
                         'roles'=>[
                             User::ROLE_USER,
