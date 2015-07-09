@@ -14,17 +14,22 @@ use yii\helpers\Html;
     
     ?>
 </p>
-<p>
-    <?php
-    echo \yii\helpers\Html::a('2) แสดงรายชื่อผู้ป่วยแยกรายอำเภอ(ตามช่วงเวลา) ', ['report/report2']);    
-    ?>
-</p>
-<p>
-    <?php
-    echo \yii\helpers\Html::a('3) แสดงรายชื่อผู้ป่วยแยกรายปี(ตามช่วงอายุ) ', ['report/report6']);    
-    ?>
-</p>
 
+<p>
+    <?php
+    echo \yii\helpers\Html::a('2) จำนวนผู้ป่วยแยกรายปี(ตามช่วงอายุ) ', ['report/report6']);    
+    ?>
+</p>
+<p>
+    <?php
+    echo \yii\helpers\Html::a('3) จำนวนผู้ป่วยแยกรายปี(ตามเพศ) ', ['report/report7']);    
+    ?>
+</p>
+<p>
+    <?php
+    echo \yii\helpers\Html::a('4) แสดงรายชื่อผู้ป่วยแยกรายอำเภอ(ตามช่วงเวลา) ', ['report/report2']);    
+    ?>
+</p>
 <div class="footerrow" style="padding-top: 60px">
    
 </div>

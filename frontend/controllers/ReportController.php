@@ -168,8 +168,7 @@ class ReportController extends Controller
             GROUP BY b.tamboncodefull
             ORDER BY b.tamboncodefull ";
         $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
-        //print_r($rawData);
-        //return;
+        
 
         try {
             $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
@@ -184,6 +183,33 @@ class ReportController extends Controller
                    
                     
         ]);
+    }
+    
+    public function actionSubIndivReport3($tamboncode = null){
+        $sql = "SELECT p.`name` as ptname, p.sex,(year(now())-year(p.birth)) as age
+            ,CONCAT(p.address,'  หมู่ที่ ' ,p.village) as addpart ,b.tambonname,a.ampurname
+            ,year(p.date_addmit)as walkin,p.tambon,p.amphur  FROM patient  p
+             LEFT JOIN campur a on a.ampurcodefull=p.amphur
+             LEFT JOIN ctambon b on b.tamboncodefull=p.tambon
+             WHERE p.tambon='$tamboncode'
+             ORDER BY b.tamboncodefull ";
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+            
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        return $this->render('subindivreport3', [
+                    'rawData' => $rawData,
+                    'sql' => $sql,
+                    'tamboncode' => $tamboncode,
+                   
+                    
+        ]);
+//        return $this->render('subindivreport3');
     }
     
     public function actionReport4(){
@@ -227,6 +253,7 @@ class ReportController extends Controller
             , sum((year(now())-year(p.birth)) >61  )as e
             from patient p
             group by year(p.date_addmit)
+            ORDER BY year(p.date_addmit) DESC
             ')->queryAll();
         //เตรียมข้อมูลส่งให้กราฟ
         for($i=0;$i<sizeof($data);$i++){
@@ -249,6 +276,36 @@ class ReportController extends Controller
             'yy'=>$yy,'a'=>$a,'b'=>$b,'c'=>$c,'d'=>$d,'e'=>$e,
         ]);
     }
+    public function actionReport7(){
+        $connection = Yii::$app->db;
+        $data = $connection->createCommand('
+           select year(p.date_addmit) as yy
+            , sum((p.sex) ="ชาย") as m
+            , sum((p.sex) ="หญิง" )as fe
+            from patient p
+            group by year(p.date_addmit)
+            ORDER BY year(p.date_addmit) DESC
+            ')->queryAll();
+        //เตรียมข้อมูลส่งให้กราฟ
+        for($i=0;$i<sizeof($data);$i++){
+            $yy[] = $data[$i]['yy'];           
+            $m[] = $data[$i]['m']*1;
+            $fe[] = $data[$i]['fe']*1;
+           
+        }
+        
+        $dataProvider = new ArrayDataProvider([
+            'allModels'=>$data,
+            'sort'=>[
+                'attributes'=>['yy']
+            ],
+        ]);
+        return $this->render('report7',[
+            'dataProvider'=>$dataProvider,
+            'yy'=>$yy,'m'=>$m,'fe'=>$fe,
+        ]);
+    }
+    
 }
     
 

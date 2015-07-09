@@ -69,15 +69,15 @@ echo \kartik\grid\GridView::widget([
             'attribute'=>'a'
         ],
          [
-            'label'=>'อายุ31-40ปี',
+            'label'=>'ระหว่าง31-40ปี',
             'attribute'=>'b'
         ],
         [
-            'label'=>'อายุ41-50ปี',
+            'label'=>'ระหว่าง41-50ปี',
             'attribute'=>'c'
         ],
          [
-            'label'=>'อายุ51-60ปี',
+            'label'=>'ระหว่าง51-60ปี',
             'attribute'=>'d'
         ],
         [
