@@ -28,14 +28,14 @@ use frontend\models\Cdischarcetype;
     <div class="panel panel-primary">
     <div class="panel-heading">
         
-            <h4>บันทึกข้อมูลผู้ป่วย STOKE</h4>
+            <h4>บันทึกข้อมูล</h4>
         
     </div>
-        
+      
         <div class="page-header-line">
             <h3><label class="label label-success">ข้อมูลประวัติผู้ป่วย</label></h3>
         </div>
-
+        
     <div class="panel-body">
         
         <div class="row">
