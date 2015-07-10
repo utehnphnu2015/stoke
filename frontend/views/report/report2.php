@@ -85,7 +85,7 @@ echo \kartik\grid\GridView::widget([
     'hover' => true,
     'floatHeader' => FALSE,
     'panel' => [
-        'heading'=>'จำนวนผู้ป่วย Stoke แยกรายตำบล',
+        'heading'=>'รายชื่อผู้ป่วย Stoke แยกรายตำบล',
         'before' => '',
         'type' => \kartik\grid\GridView::TYPE_SUCCESS,
        

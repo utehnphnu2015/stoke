@@ -125,7 +125,9 @@ $dataProvider = new ArrayDataProvider([
 echo \kartik\grid\GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
-    'panel' => ['before' => ''],
+    'panel' => ['before' => '',
+        'heading'=>'รายชื่อผู้ป่วย STOKE ในตำบล',
+        ],
     //'floatHeader' => true,
     'columns'=>[
         ['class'=>'yii\grid\SerialColumn'],

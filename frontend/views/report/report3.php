@@ -2,11 +2,13 @@
 $this->title = 'จำนวนผู้ป่วย Stoke รายอำเภอ';
 $this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][]=$this->title;
-use yii\grid\GridView;
+//use yii\grid\GridView;
 use miloschuman\highcharts\Highcharts;
 use yii\helpers\Html;
-
-
+use kartik\dynagrid\DynaGrid;
+use kartik\grid\GridView;
+use yii\helpers\ArrayHelper;
+use yii\widgets\Pjax;
 
 ?>
 <div style="display: none">
@@ -43,7 +45,6 @@ foreach ($rawData as $data) {
 $main = json_encode($main_data);
 
 ?>
-
 
 <?php
 $this->registerJs("$(function () {
@@ -87,24 +88,16 @@ $this->registerJs("$(function () {
         ],
        
     });
-});", yii\web\View::POS_END);
+});", yii\web\View::POS_END);?>
 
-echo \kartik\grid\GridView::widget([
-    'dataProvider' => $dataProvider,
-    'responsive' => TRUE,
-    'hover' => true,
-    'floatHeader' => FALSE,
-    'panel' => [
-        'heading'=>'จำนวนผู้ป่วย Stoke แยกรายอำเภอ',
-        'before' => '',
-        'type' => \kartik\grid\GridView::TYPE_SUCCESS,
-       
-    ],
-    'columns'=>[
-        ['class'=>'yii\grid\SerialColumn'],
+<?php Pjax::begin();?> 
+    <?php
+    $gridColumns = [
+    ['class'=>'kartik\grid\SerialColumn'],
         [
             'label'=>'อำเภอ',
             'attribute'=>'ampurname',
+            'pageSummary' => 'รวม ',
             'format' => 'raw',
             'value' => function($model){
                 return Html::a(Html::encode($model['ampurname']), [
@@ -116,8 +109,25 @@ echo \kartik\grid\GridView::widget([
         ],
         
         [
+            'class' => 'kartik\grid\DataColumn',
             'label'=>'จำนวน',
+            'pageSummary' => true,
             'attribute'=>'total'
         ],
-       ],    
-]);
+       ];           
+            echo GridView::widget([
+            'dataProvider' => $dataProvider,
+            //'filterModel' => $searchModel,
+            'columns' => $gridColumns,
+            'responsive' => true,
+            'hover' => true,
+            'floatHeader' => FALSE,        
+            'showPageSummary' => true,
+            'panel' => [           
+                'type' => GridView::TYPE_INFO,
+                'heading' => 'จำนวนผู้ป่วย STOKE รายปี ตามเพศ ',
+                        ],
+                    ]);
+            ?>
+<?php Pjax::end();?>
+</div>
