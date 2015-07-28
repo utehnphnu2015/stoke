@@ -11,8 +11,8 @@ $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id
 $this->params['breadcrumbs'][] = 'ปรับปรุงข้อมูล';
 ?>
 <div class="patient-update">
-
-    <h3><?= Html::encode($this->title) ?></h3>
+<div class="alert alert-danger" role="alert"><h3><?= Html::encode($this->title) ?></h3></div>
+    
 
     <?= $this->render('_form', [
         'model' => $model,

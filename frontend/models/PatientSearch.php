@@ -18,7 +18,7 @@ class PatientSearch extends Patient
     public function rules()
     {
         return [
-            [['pid', 'admit_day'], 'integer'],
+            [['pid', 'admit_day','age'], 'integer'],
             [['sex','name', 'birth', 'hn', 'an', 'cid', 'hospcode', 'date_addmit', 'date_discharge', 'ward', 'pdx', 'discharge_type', 'address', 'village', 'tambon', 'amphur', 'province', 'd_update', 'note1', 'note2', 'note3', 'note4'], 'safe'],
         ];
     }
@@ -68,6 +68,7 @@ class PatientSearch extends Patient
             'date_addmit' => $this->date_addmit,
             'date_discharge' => $this->date_discharge,
             'admit_day' => $this->admit_day,
+            'age' => $this->age,
             'd_update' => $this->d_update,
         ]);
 

@@ -23,8 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="patient-index">
-
-    <h2><?= Html::encode($this->title) ?></h2>
+<div class="alert alert-info" role="alert"><h2><?= Html::encode($this->title) ?></h2></div>
+    
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -72,7 +72,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'headerOptions'=>['class'=>'text-center'],                    
                  ], 
              //'cid',
-                
+                [
+                    'attribute'=>'age', 
+                    'headerOptions'=>['class'=>'text-center'],
+                    'contentOptions'=>['class'=>'text-center'],  
+                 ], 
                 [
                     'attribute'=>'village', 
                     'headerOptions'=>['class'=>'text-center'],

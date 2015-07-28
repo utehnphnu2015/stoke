@@ -28,25 +28,28 @@ use frontend\models\Cdischarcetype;
     <div class="panel panel-primary">
     <div class="panel-heading">
         
-            <h4>บันทึกข้อมูล</h4>
+        <h4><i class="glyphicon glyphicon-pencil"></i> บันทึกข้อมูล</h4>
         
     </div>
-      
+      <div class="panel-body">
         <div class="page-header-line">
             <h3><label class="label label-success">ข้อมูลประวัติผู้ป่วย</label></h3>
         </div>
         
-    <div class="panel-body">
+    
         
         <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="col-xs-4 col-sm-4 col-md-3">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>            
         </div>  
         <div class="col-xs-4 col-sm-4 col-md-2">            
             <?= $form->field($model, 'sex')->label('เพศ')->inline()
             ->radioList(frontend\models\Patient::itemAlias('sex')) ?>
+        </div>  
+        <div class="col-xs-4 col-sm-4 col-md-2">            
+            <?= $form->field($model, 'age')->label('อายุ(ปี)')->textInput(['maxlength' => true]) ?>
         </div>    
-        <div class="col-xs-4 col-sm-4 col-md-3">            
+        <div class="col-xs-4 col-sm-4 col-md-2">            
             <?=$form->field($model,'birth')->widget(\yii\jui\DatePicker::classname(),[  
                     'language' => 'th',
                     'dateFormat' => 'yyyy-MM-dd',
@@ -112,7 +115,7 @@ use frontend\models\Cdischarcetype;
 </div>
 
         <div class="row">
-        <div class="col-sm-offset-3 col-sm-6">
+        <div class="col-xs-4 col-sm-4 col-md-4">
             <?=
             $form->field($model, 'hospcode')->widget(Select2::className(), ['data' => 
                         ArrayHelper::map(Chospital::find()->orderBy('hospname')->all(), 'hospcode', 'hospname'),
@@ -125,18 +128,18 @@ use frontend\models\Cdischarcetype;
                     ]);
             ?>
         </div>
-        <div class="col-xs-4 col-sm-4 col-md-3">
+        <div class="col-xs-4 col-sm-4 col-md-4">
             <?= $form->field($model, 'ward')->textInput(['maxlength' => true]) ?>
+        </div> 
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <?= $form->field($model, 'hn')->textInput(['maxlength' => true]) ?>
         </div>    
         </div> 
-        <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-3">
-            <?= $form->field($model, 'hn')->textInput(['maxlength' => true]) ?>
-        </div>
-         <div class="col-xs-4 col-sm-4 col-md-3">
+        <div class="row">        
+         <div class="col-xs-4 col-sm-4 col-md-4">
             <?= $form->field($model, 'an')->textInput(['maxlength' => true]) ?>
         </div>
-            <div class="col-xs-4 col-sm-4 col-md-3">            
+            <div class="col-xs-4 col-sm-4 col-md-4">            
              <?=$form->field($model,'date_addmit')->widget(\yii\jui\DatePicker::classname(),[  
                     'language' => 'th',
                     'dateFormat' => 'yyyy-MM-dd',
@@ -150,7 +153,7 @@ use frontend\models\Cdischarcetype;
                 ]);
             ?>
         </div>
-            <div class="col-xs-4 col-sm-4 col-md-3">            
+            <div class="col-xs-4 col-sm-4 col-md-4">            
                 <?=$form->field($model,'date_discharge')->widget(\yii\jui\DatePicker::classname(),[  
                     'language' => 'th',
                     'dateFormat' => 'yyyy-MM-dd',
@@ -206,15 +209,14 @@ use frontend\models\Cdischarcetype;
          
          <div class="row">
         <div class="col-xs-9 col-sm-9 col-md-12">
-           <?= $form->field($model, 'note1')->textInput(['maxlength' => true]) ?>
+           <?= $form->field($model, 'note1')->textarea(['rows'=>4,'cols' => 4]) ?>
         </div>
         </div>
-    <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-9">
-        <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'Update', 
-            ['class' => $model->isNewRecord ? 'btn btn-success btn-block' : 'btn btn-primary btn-block']) ?>
-    </div>
-</div>
+    
+         <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+   
+        </div>
 
     <?php ActiveForm::end(); ?>
 

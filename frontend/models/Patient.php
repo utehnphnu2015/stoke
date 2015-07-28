@@ -37,6 +37,7 @@ use frontend\models\Campur;
  * @property string $note3
  * @property string $note4
  * @property string $sex
+ * @property string $age
  */
 class Patient extends \yii\db\ActiveRecord
 {
@@ -62,7 +63,7 @@ class Patient extends \yii\db\ActiveRecord
     {
         return [
             [['birth', 'date_addmit', 'date_discharge', 'd_update'], 'safe'],
-            [['admit_day'], 'integer'],
+            [['admit_day','age'], 'integer'],
             [['name', 'ward'], 'string', 'max' => 100],
             [['hn', 'an', 'cid'], 'string', 'max' => 17],
             [['hospcode','sex'], 'string', 'max' => 5],
@@ -83,6 +84,7 @@ class Patient extends \yii\db\ActiveRecord
         return [
             'pid' => 'Pid',
             'name' => 'รายชื่อ',
+            'age'=>'อายุ',
             'birth' => 'วันเกิด',
             'hn' => 'Hn',
             'an' => 'An',
