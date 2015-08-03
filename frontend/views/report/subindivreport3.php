@@ -33,7 +33,7 @@ if (!count($rawData) > 0) {
 <div id="chart2"></div>
 
 <?php
-$sql = "SELECT p.`name` as ptname, p.sex,(year(now())-year(p.birth)) as age
+$sql = "SELECT p.`name` as ptname,p.sex, p.age
             ,CONCAT(p.address,'  หมู่ที่ ' ,p.village) as addpart ,b.tambonname,a.ampurname
             ,year(p.date_addmit)as walkin,b.tamboncodefull,p.amphur  FROM patient  p
              LEFT JOIN campur a on a.ampurcodefull=p.amphur
@@ -124,6 +124,7 @@ $dataProvider = new ArrayDataProvider([
 
 echo \kartik\grid\GridView::widget([
     'dataProvider' => $dataProvider,
+    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
     'filterModel' => $searchModel,
     'panel' => ['before' => '',
         'heading'=>'รายชื่อผู้ป่วย STOKE ในตำบล',

@@ -81,6 +81,7 @@ use yii\widgets\Pjax;
 <?php
 echo \kartik\grid\GridView::widget([
     'dataProvider' => $dataProvider,
+    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
     'responsive' => TRUE,
     'hover' => true,
     'floatHeader' => FALSE,

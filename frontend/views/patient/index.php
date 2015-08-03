@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(['id'=>'stoke-gridview']);?> 
     <?php echo \kartik\grid\GridView::widget([
     'dataProvider' => $dataProvider,
+    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],    
     'filterModel'=>$searchModel,    
     'responsive' => TRUE,
     'hover' => true,    
