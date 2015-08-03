@@ -246,11 +246,11 @@ class ReportController extends Controller
         $connection = Yii::$app->db;
         $data = $connection->createCommand('
            select year(p.date_addmit) as yy
-            , sum((year(now())-year(p.birth)) <=31 )as a
-            , sum((year(now())-year(p.birth)) between 31 and 40  )as b
-            , sum((year(now())-year(p.birth)) between 41 and 50  )as c
-            , sum((year(now())-year(p.birth)) between 51 and 60  )as d
-            , sum((year(now())-year(p.birth)) >61  )as e
+            , sum((p.age) <=31 )as a
+            , sum((p.age) between 31 and 40  )as b
+            , sum((p.age) between 41 and 50  )as c
+            , sum((p.age) between 51 and 60  )as d
+            , sum((p.age) >61  )as e
             from patient p
             group by year(p.date_addmit)
             ORDER BY year(p.date_addmit) DESC
