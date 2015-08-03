@@ -74,34 +74,22 @@ $this->params['breadcrumbs'][] = $this->title;
                  ], 
              //'cid',
                 [
+                    'label'=>'อายุ(ปี)',
                     'attribute'=>'age', 
                     'headerOptions'=>['class'=>'text-center'],
                     'contentOptions'=>['class'=>'text-center'],  
                  ], 
                 [
+                     'label'=>'บ้านเลขที่',
                     'attribute'=>'village', 
                     'headerOptions'=>['class'=>'text-center'],
                     'contentOptions'=>['class'=>'text-center'],  
                  ], 
                 [
+                   'label'=>'หมู่ที่',  
                   'attribute'=>'address', 
                   'headerOptions'=>['class'=>'text-center'],
                   'contentOptions'=>['class'=>'text-center'],  
-              ], 
-                
-              [
-                  'attribute'=>'amphur',
-                  'value'=>'ampurs.ampurname',
-                  'filter'=>ArrayHelper::map(\frontend\models\Campur::find()->orderBy('ampurname')->asArray()->all(), 'ampurname', 'ampurname'),  
-                    'vAlign'=>'middle',
-                    'width'=>'160px',
-                    'filterType'=>GridView::FILTER_SELECT2,           
-                    'filterWidgetOptions'=>[
-                    'pluginOptions'=>['allowClear'=>true],
-                    //'format'=>'raw'    
-                ],
-                  'headerOptions'=>['class'=>'text-center'],
-                  'filterInputOptions'=>['placeholder'=>'เลือก อำเภอ'],
               ], 
               [
                   'attribute'=>'tambon',
@@ -116,7 +104,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                   'headerOptions'=>['class'=>'text-center'],
                   'filterInputOptions'=>['placeholder'=>'เลือก ตำบล'],  
-              ],  
+              ], 
+              [
+                  'attribute'=>'amphur',
+                  'value'=>'ampurs.ampurname',
+                  'filter'=>ArrayHelper::map(\frontend\models\Campur::find()->orderBy('ampurname')->asArray()->all(), 'ampurname', 'ampurname'),  
+                    'vAlign'=>'middle',
+                    'width'=>'160px',
+                    'filterType'=>GridView::FILTER_SELECT2,           
+                    'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                    //'format'=>'raw'    
+                ],
+                  'headerOptions'=>['class'=>'text-center'],
+                  'filterInputOptions'=>['placeholder'=>'เลือก อำเภอ'],
+              ], 
              
               [
                   'attribute'=>'pdx',
@@ -130,6 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     //'format'=>'raw'    
                 ],
                   'headerOptions'=>['class'=>'text-center'],
+                  'contentOptions'=>['class'=>'text-center'],
                   'filterInputOptions'=>['placeholder'=>'เลือก โรค'], 
               ],
         

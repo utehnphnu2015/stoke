@@ -46,7 +46,7 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => 'ลงชื่อเข้าใช้งาน', 'url' => ['/site/login']];
             } else {
                 $menuItems[] = [
-                    'label' => 'บันทึกข้อมูล',
+                    'label' => 'รายชื่อผู้ป่วย',
                     'url' => ['/patient/index'],  
                     'visible' => !Yii::$app->user->isGuest
                 ];

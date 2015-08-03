@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="panel-body">
     <?= DetailView::widget([
         'model' => $model,
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
         'attributes' => [
            // 'pid',
             'name',
@@ -57,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="panel-body">
            <?= DetailView::widget([
         'model' => $model,
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],       
         'attributes' => [ 
             [
                 'attribute'=>'hospcode',
