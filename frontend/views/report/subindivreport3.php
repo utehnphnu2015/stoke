@@ -127,7 +127,7 @@ echo \kartik\grid\GridView::widget([
     'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-'],
     'filterModel' => $searchModel,
     'panel' => ['before' => '',
-        'heading'=>'รายชื่อผู้ป่วย STOKE ในตำบล',
+        'heading'=>'รายชื่อผู้ป่วย STROKE ในตำบล',
         ],
     //'floatHeader' => true,
     'columns'=>[

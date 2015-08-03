@@ -1,5 +1,5 @@
 <?php
-$this->title = 'จำนวนผู้ป่วย Stoke รายอำเภอ';
+$this->title = 'จำนวนผู้ป่วย Stroke รายอำเภอ';
 $this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][]=$this->title;
 //use yii\grid\GridView;
@@ -54,7 +54,7 @@ $this->registerJs("$(function () {
             type: 'column'
         },
         title: {
-            text: 'จำนวนผู้ป่วย STOKE แยกรายอำเภอ'
+            text: 'จำนวนผู้ป่วย STROKE แยกรายอำเภอ'
         },
         xAxis: {
             type: 'category'
@@ -125,7 +125,7 @@ $this->registerJs("$(function () {
             'showPageSummary' => true,
             'panel' => [           
                 'type' => GridView::TYPE_INFO,
-                'heading' => 'จำนวนผู้ป่วย STOKE รายปี ตามเพศ ',
+                'heading' => 'จำนวนผู้ป่วย STROKE รายปี ตามเพศ ',
                         ],
                     ]);
             ?>

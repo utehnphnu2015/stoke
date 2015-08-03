@@ -5,8 +5,8 @@ use yii\helpers\Html;
 //use yii\grid\GridView;
 ?>
 <div class="alert alert-success" role="alert">
-    <h3>รายงานผู้ป่วย STOKE </h3><p>
-<h5> ข้อมูลการบันทึกผู้ป่วย STOKE ของจังหวัดพิษณุโลก</h5>
+    <h3>รายงานผู้ป่วย STROKE </h3><p>
+<h5> ข้อมูลการบันทึกผู้ป่วย STROKE ของจังหวัดพิษณุโลก</h5>
 </div>
 <p>
     <?php

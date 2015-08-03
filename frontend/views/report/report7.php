@@ -1,5 +1,5 @@
 <?php
-$this->title = 'จำนวนผู้ป่วย STOKE รายปี ตามเพศ';
+$this->title = 'จำนวนผู้ป่วย STROKE รายปี ตามเพศ';
 $this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][]=$this->title;
 //use yii\grid\GridView;
@@ -12,7 +12,7 @@ use yii\widgets\Pjax;
 
 echo Highcharts::widget([
     'options'=>[        
-        'title'=>['text'=>'จำนวนผู้ป่วย STOKE รายปี ตามเพศ'],
+        'title'=>['text'=>'จำนวนผู้ป่วย STROKE รายปี ตามเพศ'],
         'xAxis'=>[
             'categories'=>$yy
         ],
@@ -99,7 +99,7 @@ echo Highcharts::widget([
             'showPageSummary' => true,
             'panel' => [           
                 'type' => GridView::TYPE_INFO,
-                'heading' => 'จำนวนผู้ป่วย STOKE รายปี ตามเพศ ',
+                'heading' => 'จำนวนผู้ป่วย STROKE รายปี ตามเพศ ',
                         ],
                     ]);
             ?>

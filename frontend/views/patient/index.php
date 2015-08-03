@@ -17,7 +17,7 @@ use frontend\models\Patient;
 /* @var $searchModel frontend\models\PatientSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'ผู้ป่วย STOKE ที่admit จ.พิษณุโลก';
+$this->title = 'ผู้ป่วย STROKE ที่admit จ.พิษณุโลก';
 $this->params['breadcrumbs'][] = ['label' => 'บันทึกข้อมูล', 'url' => ['patient/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,14 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php //echo  Html::a('<i class="glyphicon glyphicon-plus"></i> 1บันทึกข้อมูลผู้ป่วย STOKE',['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> บันทึกข้อมูลผู้ป่วย STOKE', [
+        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> บันทึกข้อมูลผู้ป่วย STROKE', [
             'value'=>Url::to('index.php?r=patient/create'),'class' => 
             'btn btn-success','id'=>'modalButton2']) ?>
     </p>
     
     <?php
         Modal::begin([
-            'header'=>'<h4>บันทึกข้อมูลผู้ป่วย STOKE</h4>',
+            'header'=>'<h4>บันทึกข้อมูลผู้ป่วย STROKE</h4>',
             'id'=>'modal2',
             'size'=>'modal-lg',
             'options'=>[

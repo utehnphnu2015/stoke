@@ -1,5 +1,5 @@
 <?php
-$this->title = 'จำนวนผู้ป่วย Stoke แยกอำเภอ';
+$this->title = 'จำนวนผู้ป่วย Stroke แยกอำเภอ';
 $this->params['breadcrumbs'][] = ['label' => 'รายงาน', 'url' => ['report/index']];
 $this->params['breadcrumbs'][]=$this->title;
 use yii\grid\GridView;
@@ -13,7 +13,7 @@ echo \kartik\grid\GridView::widget([
     'hover' => true,
     'floatHeader' => FALSE,
     'panel' => [
-        'heading'=>'จำนวนผู้ป่วย Stoke แยกรายตำบล',
+        'heading'=>'จำนวนผู้ป่วย Stroke แยกรายตำบล',
         'before' => '',
         'type' => \kartik\grid\GridView::TYPE_SUCCESS,
        
@@ -37,7 +37,7 @@ echo \kartik\grid\GridView::widget([
 
 echo Highcharts::widget([
     'options'=>[
-        'title'=>['text'=>'แสดงจำนวนผู้ป่วย Stoke แยกรายตำบล'],
+        'title'=>['text'=>'แสดงจำนวนผู้ป่วย Stroke แยกรายตำบล'],
         'xAxis'=>[
             'categories'=>$tambonname
         ],

@@ -68,7 +68,7 @@ $this->registerJs("$(function () {
             type: 'column'
         },
         title: {
-            text: 'จำนวนผู้ป่วย STOKE '
+            text: 'จำนวนผู้ป่วย STROKE '
         },
         xAxis: {
             type: 'category'

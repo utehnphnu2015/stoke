@@ -59,7 +59,7 @@ $this->registerJs("$(function () {
             type: 'column'
         },
         title: {
-            text: 'จำนวนผู้ป่วย STOKE แยกรายตำบล'
+            text: 'จำนวนผู้ป่วย STROKE แยกรายตำบล'
         },
         xAxis: {
             type: 'category'
@@ -124,7 +124,7 @@ echo \kartik\grid\GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,    
     'panel' => ['before' => '',
-        'heading'=>'จำนวนผู้ป่วย STOKE แยกรายตำบล',
+        'heading'=>'จำนวนผู้ป่วย STROKE แยกรายตำบล',
         ],
     //'floatHeader' => true,
     'columns'=>[

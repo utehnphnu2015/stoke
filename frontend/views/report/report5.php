@@ -1,5 +1,5 @@
 <?php
-$this->title = 'จำนวนผู้ป่วย Stoke ตามช่วงอายุ';
+$this->title = 'จำนวนผู้ป่วย Stroke ตามช่วงอายุ';
 $this->params['breadcrumbs'][]=$this->title;
 use yii\grid\GridView;
 use miloschuman\highcharts\Highcharts;
@@ -90,7 +90,7 @@ echo \kartik\grid\GridView::widget([
     'hover' => true,
     'floatHeader' => FALSE,
     'panel' => [
-        'heading'=>'จำนวนผู้ป่วย Stoke แยกรายปี ตามกลุ่มอายุ',
+        'heading'=>'จำนวนผู้ป่วย Stroke แยกรายปี ตามกลุ่มอายุ',
         'before' => '',
         'type' => \kartik\grid\GridView::TYPE_SUCCESS,
        
